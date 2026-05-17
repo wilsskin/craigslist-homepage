@@ -17,9 +17,19 @@ export function CategoryTabBar({ activeTab, onTabChange }: CategoryTabBarProps) 
         data-testid="category-tab-bar"
         className="w-full"
         style={{
-          borderBottom: '1px solid #EEEEEE',
+          position: 'relative',
         }}
       >
+        <div
+          style={{
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '1px',
+            backgroundColor: '#EEEEEE',
+          }}
+        />
         <Tabs.List
           className="flex items-end outline-none"
           style={{
@@ -74,8 +84,9 @@ export function CategoryTabBar({ activeTab, onTabChange }: CategoryTabBarProps) 
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      height: '2px',
+                      height: '2.5px',
                       backgroundColor: '#191919',
+                      zIndex: 1000,
                     }}
                     transition={{
                       type: 'tween',
