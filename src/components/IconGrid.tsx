@@ -12,7 +12,7 @@ function IconCard({ item, sectionId }: TabItem) {
     <div
       className="flex flex-col items-center justify-center cursor-pointer box-border"
       style={{
-        width: '76px',
+        width: '100%',
         minHeight: '76px',
         padding: '16px 2px',
         gap: '4px',
@@ -75,7 +75,7 @@ export function IconGrid({ items }: IconGridProps) {
       data-testid="icon-grid"
       style={{
         display: 'grid',
-        gridTemplateColumns: 'repeat(8, 1fr)',
+        gridTemplateColumns: 'repeat(auto-fill, minmax(72px, 1fr))',
         gap: '24px 16px',
         alignItems: 'start',
       }}

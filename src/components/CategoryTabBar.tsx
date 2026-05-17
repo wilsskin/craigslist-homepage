@@ -26,6 +26,8 @@ export function CategoryTabBar({ activeTab, onTabChange }: CategoryTabBarProps) 
             gap: '24px',
             marginBottom: -1,
             paddingTop: '24px',
+            paddingRight: '24px',
+            minWidth: 'max-content',
           }}
         >
           {CATEGORY_TABS.map((tab) => {
