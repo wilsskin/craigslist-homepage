@@ -15,7 +15,6 @@ interface CombinedSearchBarProps {
   locationLabel: string
   onLocationClick: () => void
   onSearchSubmit?: () => void
-  isLocationModalOpen?: boolean
   /** When true, bar stays expanded and location shows black until user clicks outside bar */
   locationJustApplied?: boolean
   onLocationHighlightDismiss?: () => void
@@ -27,21 +26,14 @@ export function CombinedSearchBar({
   locationLabel,
   onLocationClick,
   onSearchSubmit,
-  isLocationModalOpen = false,
   locationJustApplied = false,
   onLocationHighlightDismiss,
 }: CombinedSearchBarProps) {
-  const [barHovered, setBarHovered] = useState(false)
   const [hoverLocation, setHoverLocation] = useState(false)
   const [isSearchFocused, setIsSearchFocused] = useState(false)
   const barRef = useRef<HTMLDivElement>(null)
 
-  const isExpanded =
-    barHovered ||
-    searchQuery.length > 0 ||
-    isLocationModalOpen ||
-    isSearchFocused ||
-    locationJustApplied
+  const isExpanded = isSearchFocused || searchQuery.length > 0
 
   // When location was just applied, dismiss highlight on click outside the bar
   useEffect(() => {
@@ -69,8 +61,6 @@ export function CombinedSearchBar({
         backgroundColor: '#FFFFFF',
         transition: `max-width ${TRANSITION_MS}ms ${EASE_OUT}, border-color 150ms ${EASE_OUT}`,
       }}
-      onMouseEnter={() => setBarHovered(true)}
-      onMouseLeave={() => setBarHovered(false)}
     >
       {/* Left zone: search input */}
       <div

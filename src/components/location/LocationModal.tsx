@@ -140,14 +140,14 @@ export function LocationModal({
             zIndex: 1,
           }}
         />
-        <div className="flex min-h-[440px] relative">
+        <div className="flex min-h-[440px] relative location-modal-inner">
           {/* Left panel: search, city list, chips, radius, actions */}
           <div
-            className="flex flex-col"
+            className="flex flex-col location-modal-left-panel"
             style={{
               backgroundColor: 'var(--color-bg-page)',
               padding: '24px',
-              width: '50%', // Explicitly set to 50% to account for padding
+              width: '50%',
               boxSizing: 'border-box',
             }}
           >
@@ -488,11 +488,11 @@ export function LocationModal({
 
           {/* Right panel: map */}
           <div
-            className="flex flex-col relative"
+            className="flex flex-col relative location-modal-right-panel"
             style={{
               backgroundColor: 'var(--color-bg-page)',
-              paddingTop: '48px', // Space for close button in top right
-              width: '50%', // Explicitly set to 50% to match left panel
+              paddingTop: '48px',
+              width: '50%',
               boxSizing: 'border-box',
             }}
             data-testid="modal-map-placeholder"

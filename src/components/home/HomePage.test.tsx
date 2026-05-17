@@ -23,7 +23,7 @@ describe('HomePage layout regions', () => {
 describe('Combined search bar', () => {
   it('renders search input with "search anything" placeholder', () => {
     render(<HomePage />)
-    const input = screen.getByPlaceholderText('search anything')
+    const input = screen.getByPlaceholderText('search craigslist')
     expect(input).toBeInTheDocument()
     expect(input).toHaveValue('')
   })
@@ -31,7 +31,7 @@ describe('Combined search bar', () => {
   it('updates value when the user types', async () => {
     const user = userEvent.setup()
     render(<HomePage />)
-    const input = screen.getByPlaceholderText('search anything')
+    const input = screen.getByPlaceholderText('search craigslist')
     await user.type(input, 'apartments')
     expect(input).toHaveValue('apartments')
   })
@@ -39,7 +39,7 @@ describe('Combined search bar', () => {
   it('shows clear X when query is non-empty', async () => {
     const user = userEvent.setup()
     render(<HomePage />)
-    const input = screen.getByPlaceholderText('search anything')
+    const input = screen.getByPlaceholderText('search craigslist')
     await user.type(input, 'test')
     expect(screen.getByTestId('combined-search-clear')).toBeInTheDocument()
   })
@@ -47,7 +47,7 @@ describe('Combined search bar', () => {
   it('clears search when X is clicked', async () => {
     const user = userEvent.setup()
     render(<HomePage />)
-    const input = screen.getByPlaceholderText('search anything')
+    const input = screen.getByPlaceholderText('search craigslist')
     await user.type(input, 'test')
     await user.click(screen.getByTestId('combined-search-clear'))
     expect(input).toHaveValue('')
@@ -62,7 +62,7 @@ describe('Combined search bar', () => {
 })
 
 describe('Category tab bar', () => {
-  it('renders all 7 tabs in order', () => {
+  it('renders all 8 tabs in order', () => {
     render(<HomePage />)
     for (const tab of CATEGORY_TABS) {
       expect(screen.getByTestId(`tab-${tab.id}`)).toBeInTheDocument()
@@ -112,7 +112,7 @@ describe('Search filtering within active tab', () => {
     const user = userEvent.setup()
     render(<HomePage />)
 
-    const input = screen.getByPlaceholderText('search anything')
+    const input = screen.getByPlaceholderText('search craigslist')
     await user.type(input, 'zzzz_not_found')
 
     expect(screen.getByTestId('search-empty-state')).toBeInTheDocument()
@@ -123,7 +123,7 @@ describe('Search filtering within active tab', () => {
     const user = userEvent.setup()
     render(<HomePage />)
 
-    const input = screen.getByPlaceholderText('search anything')
+    const input = screen.getByPlaceholderText('search craigslist')
     await user.type(input, 'zzzz_not_found')
 
     await user.click(screen.getByTestId('empty-state-clear'))
